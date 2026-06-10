@@ -1,0 +1,48 @@
+@import '../../styles/_variables.scss';
+@import '../../styles/_mixins.scss';
+
+.about {
+  padding: var(--spacing-3xl) 0;
+  
+  &__container {
+    @include container;
+    max-width: 800px;
+  }
+  
+  &__title {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-xl);
+    @include text-gradient;
+  }
+  
+  &__text {
+    font-size: 1.125rem;
+    color: var(--color-gray-light);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-2xl);
+  }
+  
+  &__info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+  }
+  
+  &__info-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  
+  &__info-label {
+    font-size: 0.875rem;
+    color: var(--color-gray);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  &__info-value {
+    font-size: 1.125rem;
+    color: var(--color-light);
+  }
+}

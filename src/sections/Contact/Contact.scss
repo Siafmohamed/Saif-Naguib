@@ -1,0 +1,47 @@
+@import '../../styles/_variables.scss';
+@import '../../styles/_mixins.scss';
+
+.contact {
+  padding: var(--spacing-3xl) 0;
+  
+  &__container {
+    @include container;
+    max-width: 800px;
+    text-align: center;
+  }
+  
+  &__title {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-lg);
+    @include text-gradient;
+  }
+  
+  &__text {
+    font-size: 1.125rem;
+    color: var(--color-gray-light);
+    margin-bottom: var(--spacing-2xl);
+  }
+  
+  &__links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xl);
+  }
+  
+  &__social {
+    display: flex;
+    gap: var(--spacing-lg);
+  }
+  
+  &__social-link {
+    color: var(--color-primary);
+    font-weight: 500;
+    transition: color var(--transition-fast);
+    
+    &:hover {
+      color: var(--color-primary-dark);
+      text-decoration: underline;
+    }
+  }
+}
