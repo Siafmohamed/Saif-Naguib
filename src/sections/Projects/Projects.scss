@@ -3,76 +3,203 @@
 
 .projects {
   padding: var(--spacing-3xl) 0;
-  
+
   &__container {
     @include container;
   }
-  
-  &__title {
-    font-size: 2.5rem;
-    margin-bottom: var(--spacing-2xl);
-    @include text-gradient;
+
+  &__featured {
+    margin-bottom: var(--spacing-xl);
   }
-  
-  &__grid {
+
+  &__row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: var(--spacing-xl);
   }
-  
+
   &__card {
-    padding: 0;
-    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    @include hover-lift;
+
+    &--featured {
+      .projects__card-content {
+        padding: var(--spacing-xl);
+      }
+
+      .projects__card-title {
+        font-size: 1.5rem;
+      }
+
+      .projects__card-description {
+        font-size: 1rem;
+        max-width: 42rem;
+      }
+
+      .projects__card-button {
+        width: auto;
+        align-self: flex-start;
+      }
+    }
   }
-  
+
   &__card-image {
     width: 100%;
-    height: 200px;
+    height: 11rem;
     overflow: hidden;
-    
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-bg);
+
+    &:not(&--featured) .projects__card-image-frame {
+      height: 100%;
+      aspect-ratio: unset;
+      border: none;
+      border-radius: 0;
+
+      img {
+        object-fit: cover;
+        object-position: top center;
+      }
+    }
+
+    &--featured {
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      background: var(--color-panel);
+      padding: var(--spacing-md);
+      gap: var(--spacing-sm);
+    }
+  }
+
+  &__browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.625rem;
+    background: var(--color-panel-raised);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  }
+
+  &__browser-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    flex-shrink: 0;
+
+    &--red {
+      background: #ff5f57;
+    }
+
+    &--yellow {
+      background: #febc2e;
+    }
+
+    &--green {
+      background: #28c840;
+    }
+  }
+
+  &__browser-url {
+    margin-left: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    color: var(--color-muted);
+  }
+
+  &__card-image-frame {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    background: var(--color-bg);
+    aspect-ratio: 16 / 9;
+
+    .projects__card-image--featured & {
+      aspect-ratio: 16 / 10;
+      max-height: 22rem;
+    }
+
     img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      transition: transform var(--transition-normal);
+      object-fit: contain;
+      object-position: top center;
+      display: block;
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition: transform var(--transition-normal);
+      }
     }
   }
-  
-  &__card:hover &__card-image img {
-    transform: scale(1.05);
+
+  &__card:hover &__card-image-frame img {
+    @media (prefers-reduced-motion: no-preference) {
+      transform: scale(1.02);
+    }
   }
-  
+
   &__card-content {
-    padding: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: var(--spacing-lg);
   }
-  
-  &__card-type {
-    display: inline-block;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--color-primary);
+
+  &__card-labels {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
     margin-bottom: var(--spacing-sm);
   }
-  
+
+  &__featured-badge {
+    @include mono-label;
+    color: var(--color-accent);
+  }
+
+  &__card-type {
+    @include mono-label;
+    color: var(--color-muted);
+  }
+
   &__card-title {
-    font-size: 1.5rem;
-    margin-bottom: var(--spacing-md);
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
   }
-  
+
   &__card-description {
-    color: var(--color-gray-light);
+    color: var(--color-body);
+    font-size: 0.9375rem;
     margin-bottom: var(--spacing-lg);
+    flex: 1;
   }
-  
+
   &__card-tags {
     display: flex;
     flex-wrap: wrap;
     gap: var(--spacing-sm);
     margin-bottom: var(--spacing-lg);
   }
-  
+
   &__card-button {
     width: 100%;
+    margin-top: auto;
+  }
+
+  @media (max-width: 900px) {
+    &__row {
+      grid-template-columns: 1fr;
+    }
+
+    &__card-image-frame {
+      .projects__card-image--featured & {
+        max-height: 16rem;
+        aspect-ratio: 16 / 11;
+      }
+    }
   }
 }

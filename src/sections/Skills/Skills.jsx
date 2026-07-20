@@ -1,42 +1,41 @@
 import './Skills.scss';
-import { skills } from '../../data/skills';
-import { Tag } from '../../components/Tag/Tag';
+import { skillCategories } from '../../data/skills';
+import { Chip } from '../../components/Chip/Chip';
+import { SectionHeader } from '../../components/SectionHeader/SectionHeader';
 import { motion } from 'framer-motion';
+import { useReducedMotion } from '../../hooks/useReducedMotion';
 
 export const Skills = () => {
+  const reducedMotion = useReducedMotion();
+
   return (
     <section id="skills" className="skills">
       <div className="skills__container">
-        <motion.h2 
-          className="skills__title"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          Skills
-        </motion.h2>
-        <motion.div 
-          className="skills__grid"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-        >
-          {skills.map((skill, index) => (
+        <SectionHeader index="04" label="Skills" title="Skills" />
+
+        <div className="skills__panels">
+          {skillCategories.map((category, index) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: index * 0.05 }}
+              key={category.label}
+              className="skills__panel"
+              {...(reducedMotion
+                ? {}
+                : {
+                    initial: { opacity: 0, y: 16 },
+                    whileInView: { opacity: 1, y: 0 },
+                    viewport: { once: true },
+                    transition: { duration: 0.45, delay: index * 0.08 },
+                  })}
             >
-              <div className="skills__item">
-                <span className="skills__text">{skill}</span>
+              <h3 className="skills__category">{category.label}</h3>
+              <div className="skills__chips">
+                {category.skills.map((skill) => (
+                  <Chip key={skill}>{skill}</Chip>
+                ))}
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

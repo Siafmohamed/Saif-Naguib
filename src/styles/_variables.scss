@@ -1,16 +1,16 @@
 :root {
-  --color-primary: #3B82F6;
-  --color-primary-dark: #2563EB;
-  --color-secondary: #10B981;
-  --color-dark: #111827;
-  --color-dark-light: #1F2937;
-  --color-light: #F9FAFB;
-  --color-gray: #6B7280;
-  --color-gray-light: #9CA3AF;
-  --color-white: #FFFFFF;
+  --color-bg: #0B0D10;
+  --color-panel: #12151A;
+  --color-panel-raised: #181C22;
+  --color-border: #262B33;
+  --color-heading: #ECE8DF;
+  --color-body: #D9DCE1;
+  --color-muted: #8B9099;
+  --color-accent: #7CFF6B;
+  --color-amber: #FFB454;
 
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-display: 'Geist', 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', monospace;
 
   --spacing-xs: 0.25rem;
   --spacing-sm: 0.5rem;
@@ -21,15 +21,11 @@
   --spacing-3xl: 4rem;
 
   --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --radius-md: 0.625rem;
+  --radius-lg: 0.625rem;
 
   --transition-fast: 150ms ease;
-  --transition-normal: 300ms ease;
+  --transition-normal: 250ms ease;
+
+  --nav-height: 4rem;
 }

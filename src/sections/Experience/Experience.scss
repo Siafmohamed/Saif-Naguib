@@ -3,69 +3,101 @@
 
 .experience {
   padding: var(--spacing-3xl) 0;
-  
+
   &__container {
     @include container;
-    max-width: 900px;
+    max-width: 52rem;
   }
-  
-  &__title {
-    font-size: 2.5rem;
-    margin-bottom: var(--spacing-2xl);
-    @include text-gradient;
-  }
-  
+
   &__timeline {
+    position: relative;
+    padding-left: var(--spacing-xl);
+    border-left: 1px solid var(--color-border);
     display: flex;
     flex-direction: column;
     gap: var(--spacing-2xl);
   }
-  
+
   &__item {
-    background: var(--color-dark-light);
-    padding: var(--spacing-xl);
-    border-radius: var(--radius-lg);
-    border-left: 4px solid var(--color-primary);
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: calc(-1 * var(--spacing-xl) - 4px);
+      top: 0.35rem;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--color-accent);
+      box-shadow: 0 0 0 3px var(--color-bg);
+    }
   }
-  
-  &__item-header {
-    @include flex-between;
-    margin-bottom: var(--spacing-md);
+
+  &__header {
+    display: flex;
     flex-wrap: wrap;
-    gap: var(--spacing-md);
-  }
-  
-  &__role {
-    font-size: 1.25rem;
-    margin-bottom: var(--spacing-xs);
-  }
-  
-  &__org {
-    color: var(--color-primary);
-    font-weight: 500;
-  }
-  
-  &__period {
-    color: var(--color-gray);
+    align-items: baseline;
+    gap: 0.375rem 0.5rem;
+    margin-bottom: var(--spacing-md);
+    font-family: var(--font-mono);
     font-size: 0.875rem;
   }
-  
+
+  &__role {
+    color: var(--color-heading);
+    font-weight: 600;
+  }
+
+  &__separator {
+    color: var(--color-muted);
+  }
+
+  &__org {
+    color: var(--color-amber);
+  }
+
+  &__period {
+    color: var(--color-muted);
+    margin-left: auto;
+    font-size: 0.8125rem;
+  }
+
   &__points {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
   }
-  
+
   &__point {
-    color: var(--color-gray-light);
     position: relative;
-    padding-left: var(--spacing-lg);
-    
+    padding-left: 1.125rem;
+    color: var(--color-body);
+    font-size: 0.9375rem;
+
     &::before {
-      content: '•';
+      content: '▸';
       position: absolute;
       left: 0;
-      color: var(--color-primary);
+      color: var(--color-accent);
+      font-size: 0.75rem;
+      top: 0.15rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    &__header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
+    }
+
+    &__separator {
+      display: none;
+    }
+
+    &__period {
+      margin-left: 0;
     }
   }
 }

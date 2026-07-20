@@ -3,40 +3,39 @@
 
 .skills {
   padding: var(--spacing-3xl) 0;
-  
+
   &__container {
     @include container;
-    max-width: 900px;
   }
-  
-  &__title {
-    font-size: 2.5rem;
-    margin-bottom: var(--spacing-2xl);
-    @include text-gradient;
+
+  &__panels {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
   }
-  
-  &__grid {
+
+  &__panel {
+    @include panel;
+    padding: var(--spacing-lg);
+    background: var(--color-panel-raised);
+  }
+
+  &__category {
+    @include mono-label;
+    color: var(--color-muted);
+    margin-bottom: var(--spacing-md);
+    font-weight: 500;
+  }
+
+  &__chips {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
   }
-  
-  &__item {
-    padding: var(--spacing-md) var(--spacing-lg);
-    background: var(--color-dark-light);
-    border-radius: var(--radius-md);
-    border: 1px solid rgba(59, 130, 246, 0.2);
-    transition: all var(--transition-normal);
-    
-    &:hover {
-      border-color: var(--color-primary);
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
+
+  @media (max-width: 900px) {
+    &__panels {
+      grid-template-columns: 1fr;
     }
-  }
-  
-  &__text {
-    font-weight: 500;
-    font-size: 1.125rem;
   }
 }

@@ -7,17 +7,28 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+}
+
 body {
   font-family: var(--font-body);
-  background-color: var(--color-dark);
-  color: var(--color-light);
-  line-height: 1.6;
+  background-color: var(--color-bg);
+  color: var(--color-body);
+  line-height: 1.65;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-display);
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--color-heading);
+  line-height: 1.2;
 }
 
 a {
@@ -40,4 +51,28 @@ img {
 
 ul, ol {
   list-style: none;
+}
+
+.app main {
+  padding-top: var(--nav-height);
+}
+
+.section-eyebrow {
+  @include mono-label;
+  color: var(--color-muted);
+  margin-bottom: var(--spacing-sm);
+
+  span {
+    color: var(--color-accent);
+  }
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  margin-bottom: var(--spacing-xl);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }

@@ -2,46 +2,53 @@
 @import '../../styles/_mixins.scss';
 
 .contact {
-  padding: var(--spacing-3xl) 0;
-  
+  padding: var(--spacing-3xl) 0 var(--spacing-2xl);
+
   &__container {
     @include container;
-    max-width: 800px;
+    max-width: 40rem;
+  }
+
+  &__panel {
+    @include panel;
+    padding: var(--spacing-2xl);
+    background: var(--color-panel-raised);
     text-align: center;
+
+    .section-title {
+      margin-bottom: var(--spacing-lg);
+    }
   }
-  
-  &__title {
-    font-size: 2.5rem;
-    margin-bottom: var(--spacing-lg);
-    @include text-gradient;
-  }
-  
+
   &__text {
-    font-size: 1.125rem;
-    color: var(--color-gray-light);
-    margin-bottom: var(--spacing-2xl);
+    font-size: 1.0625rem;
+    color: var(--color-body);
+    margin-bottom: var(--spacing-xl);
+    max-width: 32rem;
+    margin-inline: auto;
   }
-  
-  &__links {
+
+  &__actions {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--spacing-xl);
-  }
-  
-  &__social {
-    display: flex;
     gap: var(--spacing-lg);
   }
-  
-  &__social-link {
-    color: var(--color-primary);
-    font-weight: 500;
-    transition: color var(--transition-fast);
-    
-    &:hover {
-      color: var(--color-primary-dark);
-      text-decoration: underline;
+
+  &__links {
+    display: flex;
+    gap: var(--spacing-xl);
+
+    a {
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      color: var(--color-muted);
+      transition: color var(--transition-fast);
+      @include focus-ring;
+
+      &:hover {
+        color: var(--color-accent);
+      }
     }
   }
 }
